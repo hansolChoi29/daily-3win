@@ -19,3 +19,4 @@ export default function Home() {
     </section>
   );
 }
+//기본뼈대 생성 완료하여 dev 브랜치 생성
