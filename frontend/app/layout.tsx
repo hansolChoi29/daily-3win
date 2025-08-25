@@ -24,7 +24,12 @@ export default function RootLayout({
 
         <footer className="border-t bg-white/90">
           <div className="mx-auto max-w-[1440px] px-4 h-12 flex items-center text-xs text-gray-500">
-            © {new Date().getFullYear()} FocusPlan
+            © {new Date().getFullYear()} Flaticon © {new Date().getFullYear()}{" "}
+            Freepik ©Kakao ©Google @Daily3Win.com
+            <a href="https://github.com/hansolChoi29/daily-3win">
+              {" "}
+              ©HansolChoiGitHut
+            </a>
           </div>
         </footer>
 
