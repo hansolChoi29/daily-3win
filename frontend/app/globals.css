@@ -1,15 +1,19 @@
 @import "tailwindcss";
+
+/* 1) 브랜드 토큰: 최상위에 딱 한 번 */
+@theme inline {
+  --color-brand-main: #013a51;
+  --color-brand-point: #eed056;
+  --color-brand-accent: #fde68a;
+  --color-brand-bg: #fefce8;
+}
+
+/* 2) 라이트/다크 배경/전경 (필요 시 유지) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-brand-main: #4338ca; /* Deep Indigo */
-  --color-brand-point: #6ee7b7; /* Soft Mint */
-  --color-brand-accent: #fde68a; /* Sand Beige */
-  --color-brand-bg: #fefce8; /* Ivory */
-}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -17,49 +21,20 @@
   }
 }
 
+/* 3) 바디 기본값 */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-/* 랭킹 반짝이 무지개 */
-.rainbow-border {
-  position: relative;
-  border-radius: 4px;
-  padding: 2px;
-  background: linear-gradient(
-    90deg,
-    #ff0000,
-    #ff7f00,
-    #ffff00,
-    #00ff00,
-    #0000ff,
-    #8b00ff,
-    #ff0000
-  );
-  background-size: 400% 100%;
-  animation: rainbow 8s linear infinite;
-}
 
-.rainbow-border > .inner {
-  border-radius: 4px;
-  background: white; /* 박스 안쪽 색상 */
-  padding: 16px;
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
+/* 4) 커스텀 유틸 (Tailwind 계층 내에 정의) */
 @layer utilities {
+  /* 무지개 보더 유틸 */
   .rainbow-border {
     position: relative;
     border-radius: 12px;
-    padding: 2px; /* border처럼 보일 두께 */
+    padding: 2px;
     background: linear-gradient(
       90deg,
       #ff0000,
@@ -75,15 +50,18 @@ body {
   }
 
   .rainbow-border .inner {
-    border-radius: 10px; /* 부모보다 살짝 작게 */
-    background: white; /* 안쪽 배경색 */
+    border-radius: 10px;
+    background: white;
     padding: 16px;
   }
+}
 
-  @theme inline {
-    --color-brand-main: #013a51; /* Deep Indigo */
-    --color-brand-point: #eed056; /* Soft Mint */
-    --color-brand-accent: #fde68a; /* Sand Beige */
-    --color-brand-bg: #fefce8; /* Ivory */
+/* 5) 키프레임 (전역 혹은 components 레이어 아무데나 가능) */
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
   }
 }
